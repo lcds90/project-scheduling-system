@@ -1,0 +1,25 @@
+doctype html
+html(lang="pt-br")
+    include templates/header.pug
+    body
+        #agendamento.d-flex.align-items-center.justify-content-center.vh-100.mx-4
+            #cardAgendamento.card.mx-auto.p-0.bg-light.w-100.my-5.h-75.bg-transparent
+                //- img#agendamentoImg.rounded.mx-auto.d-block(src="/img/agendamento.png")
+                .card-body.h-100
+                    .card-title.text-center.w-100.p-4.bg-dark.text-white Consulta - #{appo.description}
+                    .card-text.d-flex.align-items-center.d-flex.justify-content-around.h-100
+                        p  
+                            span.badge.rounded-pill.bg-danger.text-dark.m-2 CPF
+                            | #{appo.cpf}
+                        p   
+                            span.badge.rounded-pill.bg-warning.text-dark.m-2 Paciente
+                            | #{appo.name}
+                        p  
+                            span.badge.rounded-pill.bg-info.text-dark.m-2 Email
+                            | #{appo.email}
+                        if appo.finished == false
+                            div  
+                                form(action="/finish", method="POST").d-inline-block
+                                    input(type="hidden", name="id" value=appo.id)
+                                    button.btn.btn-outline-success(type="submit") Finalizar Consulta
+    include templates/scripts.pug
