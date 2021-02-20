@@ -1,0 +1,18 @@
+#cardAgendamento.card.mx-auto.p-0.bg-light.w-100.my-5.h-75.bg-transparent.col-6
+    //- img#agendamentoImg.rounded.mx-auto.d-block(src="/img/agendamento.png")
+    .card-body.h-100
+        .card-title.text-center.w-100.p-4.bg-dark.text-white Consulta - #{appo.description}
+        .card-text.d-flex.align-items-center.d-flex.justify-content-around.h-100
+            p  
+                span.badge.rounded-pill.bg-danger.text-dark.m-2 CPF
+                | #{appo.cpf}
+            p   
+                span.badge.rounded-pill.bg-warning.text-dark.m-2 Paciente
+                | #{appo.name}
+            p  
+                span.badge.rounded-pill.bg-info.text-dark.m-2 Email
+                | #{appo.email}
+
+            p  
+                span.badge.rounded-pill.bg-info.text-dark.m-2 Finalizado?
+                | #{appo.finished}

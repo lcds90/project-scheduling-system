@@ -1,0 +1,28 @@
+doctype html
+html(lang="pt-br")
+    include templates/header.pug
+    body
+        #agendamento.vh-100.mx-4.row
+            .row.m-auto.p-1.d-flex.justify-content-around
+                .col-12.my-4.bg-secondary
+                    a.text-dark.bg-primary.m-2.p-2(href="/list") Listar todas
+                    form(action="/search", method="get")
+                        .form-group
+                            label.bg-primary.m-2.p-2(for='search') Realizar pesquisa
+                            small#searchHelp.form-text.text-white.m-2 Termos aceitos: Nome do paciente / CPF / E-mail
+                            input#search.form-control.mb-4(name="query",type='text' placeholder='Digite o termo de busca')
+                .col-4.overflow-auto.bg-danger(style="width:400px;height:400px")
+                    #list-tab.list-group.d-flex.justify-content-center.align-items-center.m-2(role='tablist')
+                        each appo in appos
+                            a.list-group-item.list-group-item-action.p-4.m-1(style="height:25px;font-size:12px",id=`list-${appo.id}-list`,data-bs-toggle='list' href=`#div_${appo.id}` role='tab' aria-controls=`div${appo.id}`) #{appo.name} - #{appo.description}
+
+                .col-8
+                    #nav-tabContent.tab-content
+                        each appoC in appos
+                            .tab-pane.fade.bg-light(style="min-height:400px; box-shadow: inset -25px -25px 25px rgba(0,0,0,.05);border:5px solid rgba(0,0,0,.05); border-bottom: none;border-right: none",id=`div_${appoC.id}`,role='tabpanel' aria-labelledby=`list-${appoC.id}-list`) 
+                                br
+                                .container #{appoC.description}
+
+
+
+        include templates/scripts.pug
